@@ -1,6 +1,6 @@
 
  
-# <p align="center">  <img width="50" alt="airslide" src="https://user-images.githubusercontent.com/76073612/215763984-21cdb33c-b54d-4993-b697-eb90ea1a1a27.png"> AirSlide <p>
+#  <img width="50" alt="airslide" src="https://user-images.githubusercontent.com/76073612/215763984-21cdb33c-b54d-4993-b697-eb90ea1a1a27.png"> AirSlide 
 
 
 
