@@ -6,7 +6,7 @@ Quick notch action to airdrop items. Free and open source alternative to [TopDro
 
 ## TDL 
 
-- MacBook Pro 16" compatibility : there might be issues atm, I don't have a machine to test it out
+- MacBook Pro 16" compatibility : there might be graphics issues atm, I don't have a machine to test it out
 - Launch at login issue, app have to be started manually when mac starts.
 
 # Useful Tools
