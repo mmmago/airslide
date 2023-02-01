@@ -166,7 +166,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSSharingServiceDelegate {
             }
             
         }
-        
         else if MBP16{
         
             let window = NSWindow(contentRect: NSMakeRect(725, 1001, 285.71, 113.74), styleMask: .borderless, backing: .buffered, defer: false)
@@ -267,6 +266,54 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSSharingServiceDelegate {
         
         }
         
+        
+        AppKit.NSEvent.addGlobalMonitorForEvents(matching: .leftMouseDown) { event in
+            
+            let mousePoint = event.locationInWindow
+
+            //Focus app on main screen
+            if self.mainScreen.frame.contains(mousePoint) == true  {
+                
+                let statusBarHeight = NSStatusBar.system.thickness
+                let screenHeight = NSScreen.main?.frame.height
+                let mouseY = event.locationInWindow.y
+                let mouseX = event.locationInWindow.x
+                let frontmostApp = NSWorkspace.shared.frontmostApplication
+                let frontmostAppBundleIdentifier = frontmostApp?.bundleIdentifier
+                
+                if MBP14 {
+                    
+                    if mouseY >= (screenHeight! - statusBarHeight) - 12 && mouseX > 665 && mouseX < 850  {
+                        
+                        if (frontmostAppBundleIdentifier! == "com.apple.finder" || frontmostAppBundleIdentifier! == "mago.airslide") {
+                            
+                            let storyboard = NSStoryboard(name: "Main", bundle: nil)
+                            let preferencesVC = storyboard.instantiateController(withIdentifier: "PreferencesViewController") as? NSViewController
+                            preferencesVC?.presentAsModalWindow(preferencesVC!)
+
+
+                            
+                        }
+                    }
+                }
+                else if MBP16 {
+                    
+                    if mouseY >= (screenHeight! - statusBarHeight) - 12 && mouseX > 756.42 && mouseX < 941.42 {
+
+                        if (frontmostAppBundleIdentifier! == "com.apple.finder" || frontmostAppBundleIdentifier! == "mago.airslide") {
+
+                            let storyboard = NSStoryboard(name: "Main", bundle: nil)
+                            let preferencesVC = storyboard.instantiateController(withIdentifier: "PreferencesViewController") as? NSViewController
+                            preferencesVC?.presentAsModalWindow(preferencesVC!)
+
+                        }
+
+                    }
+
+                }
+            }
+        
+        }
             
         AppKit.NSEvent.addGlobalMonitorForEvents(matching: .leftMouseDragged) { event in
 

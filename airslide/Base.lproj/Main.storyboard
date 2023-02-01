@@ -82,13 +82,13 @@
         <!--Preferences-->
         <scene sceneID="y6d-K2-Xch">
             <objects>
-                <viewController title="Preferences" id="d4T-8K-n1C" customClass="PreferenceViewController" customModule="AirSlide" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Preferences" storyboardIdentifier="PreferencesViewController" id="d4T-8K-n1C" customClass="PreferenceViewController" customModule="AirSlide" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="6lc-72-bkn">
-                        <rect key="frame" x="0.0" y="0.0" width="400" height="200"/>
+                        <rect key="frame" x="0.0" y="0.0" width="400" height="230"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="p2K-Hp-SD0">
-                                <rect key="frame" x="30" y="114" width="296" height="18"/>
+                                <rect key="frame" x="30" y="144" width="296" height="18"/>
                                 <buttonCell key="cell" type="check" title="Open at login (broken atm, have to find a fix)" bezelStyle="regularSquare" imagePosition="left" enabled="NO" inset="2" id="pb9-q5-nCx">
                                     <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -98,7 +98,7 @@
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YQq-Q6-bgp">
-                                <rect key="frame" x="30" y="78" width="148" height="18"/>
+                                <rect key="frame" x="30" y="108" width="148" height="18"/>
                                 <buttonCell key="cell" type="check" title="Hide status bar icon" bezelStyle="regularSquare" imagePosition="left" alignment="center" inset="2" id="K6D-Kr-KaI">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -108,15 +108,15 @@
                                 </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="H5C-Pj-784">
-                                <rect key="frame" x="18" y="151" width="93" height="29"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="Settings" id="mHX-kS-dL8">
+                                <rect key="frame" x="86" y="181" width="179" height="29"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="AirSlide settings" id="mHX-kS-dL8">
                                     <font key="font" metaFont="system" size="25"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ZY4-K2-KJg">
-                                <rect key="frame" x="30" y="43" width="131" height="16"/>
+                                <rect key="frame" x="30" y="73" width="131" height="16"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Custom drop sound :" id="2JZ-dK-rIb">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -124,7 +124,7 @@
                                 </textFieldCell>
                             </textField>
                             <comboBox verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0xm-Mf-YuR">
-                                <rect key="frame" x="169" y="35" width="128" height="26"/>
+                                <rect key="frame" x="169" y="65" width="128" height="26"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="cR7-O1-AeN"/>
                                     <constraint firstAttribute="width" constant="125" id="hn9-Ov-62r"/>
@@ -138,30 +138,69 @@
                                     </connections>
                                 </comboBoxCell>
                             </comboBox>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rYu-Eg-xcW">
+                                <rect key="frame" x="267" y="172" width="48" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="SRA-EJ-C15"/>
+                                    <constraint firstAttribute="width" constant="48" id="VL4-zE-1nH"/>
+                                </constraints>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSApplicationIcon" id="xWX-uF-fru"/>
+                            </imageView>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="f7m-Ag-8W2">
+                                <rect key="frame" x="216" y="17" width="106" height="32"/>
+                                <buttonCell key="cell" type="push" title="Support ☕️" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="86v-eC-wzH">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="support:" target="d4T-8K-n1C" id="byv-kw-Wkk"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="nKJ-Xe-Qmg">
+                                <rect key="frame" x="81" y="17" width="86" height="32"/>
+                                <buttonCell key="cell" type="push" title="Quit app" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="BTq-Z2-hkz">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="quitapp:" target="d4T-8K-n1C" id="Cdw-Ng-lsW"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="ZY4-K2-KJg" firstAttribute="leading" secondItem="6lc-72-bkn" secondAttribute="leading" constant="32" id="2qB-37-8Cw"/>
+                            <constraint firstAttribute="trailing" secondItem="f7m-Ag-8W2" secondAttribute="trailing" constant="85" id="81j-YM-OW1"/>
                             <constraint firstItem="p2K-Hp-SD0" firstAttribute="top" secondItem="H5C-Pj-784" secondAttribute="bottom" constant="20" id="97M-Xy-Mh5"/>
-                            <constraint firstItem="H5C-Pj-784" firstAttribute="leading" secondItem="6lc-72-bkn" secondAttribute="leading" constant="20" symbolic="YES" id="Bwq-a4-pow"/>
+                            <constraint firstItem="H5C-Pj-784" firstAttribute="centerX" secondItem="6lc-72-bkn" secondAttribute="centerX" constant="-25" id="BgN-OV-Tvu"/>
+                            <constraint firstItem="H5C-Pj-784" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6lc-72-bkn" secondAttribute="leading" id="Bwq-a4-pow"/>
+                            <constraint firstAttribute="bottom" secondItem="f7m-Ag-8W2" secondAttribute="bottom" constant="24" id="DMb-om-zTY"/>
                             <constraint firstItem="p2K-Hp-SD0" firstAttribute="leading" secondItem="6lc-72-bkn" secondAttribute="leading" constant="32" id="Dyy-j0-UFU"/>
                             <constraint firstItem="YQq-Q6-bgp" firstAttribute="top" secondItem="p2K-Hp-SD0" secondAttribute="bottom" constant="20" id="FTS-5e-TOI"/>
+                            <constraint firstItem="rYu-Eg-xcW" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="H5C-Pj-784" secondAttribute="trailing" id="Fc0-eg-F8F"/>
+                            <constraint firstItem="nKJ-Xe-Qmg" firstAttribute="top" secondItem="ZY4-K2-KJg" secondAttribute="bottom" constant="29" id="FlJ-EL-7sV"/>
+                            <constraint firstAttribute="bottom" secondItem="nKJ-Xe-Qmg" secondAttribute="bottom" constant="24" id="KN6-CD-LWy"/>
                             <constraint firstItem="ZY4-K2-KJg" firstAttribute="top" secondItem="YQq-Q6-bgp" secondAttribute="bottom" constant="20" id="LoE-hX-IVB"/>
+                            <constraint firstItem="rYu-Eg-xcW" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="H5C-Pj-784" secondAttribute="trailing" id="P1y-0K-bJb"/>
+                            <constraint firstItem="f7m-Ag-8W2" firstAttribute="leading" secondItem="nKJ-Xe-Qmg" secondAttribute="trailing" constant="63" id="Ytk-fK-XSk"/>
                             <constraint firstItem="0xm-Mf-YuR" firstAttribute="leading" secondItem="ZY4-K2-KJg" secondAttribute="trailing" constant="10" id="cxS-gJ-iAM"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="p2K-Hp-SD0" secondAttribute="trailing" constant="20" symbolic="YES" id="eQF-LB-YVF"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="YQq-Q6-bgp" secondAttribute="trailing" constant="20" symbolic="YES" id="ebh-AA-S9L"/>
+                            <constraint firstItem="f7m-Ag-8W2" firstAttribute="top" secondItem="0xm-Mf-YuR" secondAttribute="bottom" constant="25" id="kQm-X5-IWT"/>
+                            <constraint firstItem="rYu-Eg-xcW" firstAttribute="top" secondItem="6lc-72-bkn" secondAttribute="top" constant="10" id="tYf-gY-b68"/>
+                            <constraint firstItem="rYu-Eg-xcW" firstAttribute="centerX" secondItem="6lc-72-bkn" secondAttribute="centerX" constant="91" id="x1o-SF-UZ1"/>
                             <constraint firstItem="0xm-Mf-YuR" firstAttribute="top" secondItem="YQq-Q6-bgp" secondAttribute="bottom" constant="20" id="x2n-Zp-xcP"/>
-                            <constraint firstAttribute="bottom" secondItem="0xm-Mf-YuR" secondAttribute="bottom" constant="39" id="xGY-jR-zYN"/>
+                            <constraint firstAttribute="bottom" secondItem="0xm-Mf-YuR" secondAttribute="bottom" constant="69" id="xGY-jR-zYN"/>
+                            <constraint firstItem="nKJ-Xe-Qmg" firstAttribute="leading" secondItem="6lc-72-bkn" secondAttribute="leading" constant="88" id="xIo-rU-LoN"/>
                             <constraint firstItem="YQq-Q6-bgp" firstAttribute="leading" secondItem="6lc-72-bkn" secondAttribute="leading" constant="32" id="ycY-Ot-xFD"/>
-                            <constraint firstItem="H5C-Pj-784" firstAttribute="top" secondItem="6lc-72-bkn" secondAttribute="top" constant="20" symbolic="YES" id="yhf-cv-WEP"/>
+                            <constraint firstItem="H5C-Pj-784" firstAttribute="top" secondItem="6lc-72-bkn" secondAttribute="top" constant="20" id="yhf-cv-WEP"/>
                         </constraints>
-                        <connections>
-                            <outlet property="log" destination="p2K-Hp-SD0" id="avN-Dd-h3u"/>
-                            <outlet property="sdsdsd" destination="pb9-q5-nCx" id="KHM-RJ-lfv"/>
-                        </connections>
                     </view>
                     <connections>
                         <outlet property="hideicon" destination="YQq-Q6-bgp" id="gZ6-ND-QYf"/>
-                        <outlet property="login" destination="pb9-q5-nCx" id="I9n-LF-0W7"/>
                         <outlet property="openatlogin" destination="p2K-Hp-SD0" id="1wr-qC-6D1"/>
+                        <outlet property="quitapp" destination="nKJ-Xe-Qmg" id="MbE-gQ-9F2"/>
                         <outlet property="soundlist" destination="feD-rg-O6C" id="W2T-fu-Ahp"/>
+                        <outlet property="support" destination="f7m-Ag-8W2" id="tEp-Ke-vPA"/>
                     </connections>
                 </viewController>
                 <customObject id="WT6-Lb-22M" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -169,4 +208,7 @@
             <point key="canvasLocation" x="1421" y="-97"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="NSApplicationIcon" width="32" height="32"/>
+    </resources>
 </document>

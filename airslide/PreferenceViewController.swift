@@ -17,6 +17,8 @@ class PreferenceViewController: NSViewController {
     @IBOutlet weak var openatlogin: NSButton!
     @IBOutlet weak var hideicon: NSButton!
     @IBOutlet weak var soundlist: NSComboBoxCell!
+    @IBOutlet weak var support: NSButton!
+    @IBOutlet weak var quitapp: NSButton!
     
     @IBAction func openatlogin(_ sender: Any) {
         
@@ -76,7 +78,15 @@ class PreferenceViewController: NSViewController {
     }
     
     
+    @IBAction func quitapp(_ sender: Any) {
+        NSApplication.shared.terminate(self)
+    }
     
+    @IBAction func support(_ sender: Any) {
+        if let url = URL(string: "https://www.paypal.com/donate/?hosted_button_id=TUH8ECY3KP4BW") {
+            NSWorkspace.shared.open(url)
+        }
+    }
     
     
     override func viewDidLoad() {
