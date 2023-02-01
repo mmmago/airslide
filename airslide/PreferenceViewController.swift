@@ -6,8 +6,7 @@
 //
 
 import Cocoa
-import ServiceManagement
-import LaunchAtLogin
+
 
 let userDefaults = UserDefaults.standard
 
@@ -99,13 +98,17 @@ class PreferenceViewController: NSViewController {
 
         soundlist.addItems(withObjectValues: soundOptions)
         
+        
+        
         //set default sound to "Puur" cuz it's nice
-        if UserDefaults.standard.string(forKey: "actualsound")! == "" {
+        if UserDefaults.standard.string(forKey: "actualsound") == nil {
             soundlist.title = "Purr"
         }
         else {
             soundlist.title = UserDefaults.standard.string(forKey: "actualsound")!
         }
+        
+        
         
         if (UserDefaults.standard.value(forKey: "openatlogin") != nil) == true{
             openatlogin.state = .on
@@ -114,11 +117,16 @@ class PreferenceViewController: NSViewController {
             openatlogin.state = .off
             }
         
-        if UserDefaults.standard.value(forKey: "hideicon") as! Int == 1{
+        
+        
+        if UserDefaults.standard.value(forKey: "hideicon") == nil{
+            hideicon.state = .off
+        }
+        else if UserDefaults.standard.value(forKey: "hideicon") as! Int == 1{
             hideicon.state = .on
         
         }
-        else {
+        else if UserDefaults.standard.value(forKey: "hideicon") as! Int == 0{ 
             hideicon.state = .off
             
         }
