@@ -23,7 +23,7 @@ class PreferenceViewController: NSViewController {
         
     // BROKEN
 //        if openatlogin.state == .on {
-//            UserDefaults.standard.set(true, forKey: "openatlogin")
+//  /Users/lucas/Desktop/airslide/AirSlide.xcodeproj          UserDefaults.standard.set(true, forKey: "openatlogin")
 //
 //            LaunchAtLogin.isEnabled = true
 //
@@ -103,6 +103,7 @@ class PreferenceViewController: NSViewController {
         //set default sound to "Puur" cuz it's nice
         if UserDefaults.standard.string(forKey: "actualsound") == nil {
             soundlist.title = "Purr"
+            UserDefaults.standard.set("Purr", forKey: "actualsound")
         }
         else {
             soundlist.title = UserDefaults.standard.string(forKey: "actualsound")!
