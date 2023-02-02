@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A0427C27298BEC4600538691 /* login.sh in Resources */ = {isa = PBXBuildFile; fileRef = A0427C25298BEC4600538691 /* login.sh */; };
+		A0427C28298BEC4600538691 /* nologin.sh in Resources */ = {isa = PBXBuildFile; fileRef = A0427C26298BEC4600538691 /* nologin.sh */; };
 		A050ADF829893E7200C295A3 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = A050ADF729893E7200C295A3 /* Credits.rtf */; };
 		A0EFF9F829833873002FF9B5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EFF9F729833873002FF9B5 /* AppDelegate.swift */; };
 		A0EFF9FA29833873002FF9B5 /* PreferenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EFF9F929833873002FF9B5 /* PreferenceViewController.swift */; };
@@ -48,6 +50,8 @@
 
 /* Begin PBXFileReference section */
 		A006CA0C29855D9D00D434B4 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
+		A0427C25298BEC4600538691 /* login.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; name = login.sh; path = airslide/login.sh; sourceTree = "<group>"; };
+		A0427C26298BEC4600538691 /* nologin.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; name = nologin.sh; path = airslide/nologin.sh; sourceTree = "<group>"; };
 		A050ADF729893E7200C295A3 /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; name = Credits.rtf; path = airslide/Credits.rtf; sourceTree = "<group>"; };
 		A0EFF9F429833873002FF9B5 /* AirSlide.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AirSlide.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0EFF9F729833873002FF9B5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -82,6 +86,8 @@
 		A0EFF9EB29833873002FF9B5 = {
 			isa = PBXGroup;
 			children = (
+				A0427C25298BEC4600538691 /* login.sh */,
+				A0427C26298BEC4600538691 /* nologin.sh */,
 				A050ADF729893E7200C295A3 /* Credits.rtf */,
 				A0EFF9F629833873002FF9B5 /* airslide */,
 				A0EFFA0829833873002FF9B5 /* airslideTests */,
@@ -195,6 +201,8 @@
 			files = (
 				A0EFF9FC29833873002FF9B5 /* Assets.xcassets in Resources */,
 				A0EFF9FF29833873002FF9B5 /* Main.storyboard in Resources */,
+				A0427C28298BEC4600538691 /* nologin.sh in Resources */,
+				A0427C27298BEC4600538691 /* login.sh in Resources */,
 				A050ADF829893E7200C295A3 /* Credits.rtf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -367,7 +375,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
-				MARKETING_VERSION = 1.1.3;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = mago.airslide;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -400,7 +408,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
-				MARKETING_VERSION = 1.1.3;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = mago.airslide;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

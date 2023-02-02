@@ -21,19 +21,41 @@ class PreferenceViewController: NSViewController {
     
     @IBAction func openatlogin(_ sender: Any) {
         
-    // BROKEN
-//        if openatlogin.state == .on {
-//  /Users/lucas/Desktop/airslide/AirSlide.xcodeproj          UserDefaults.standard.set(true, forKey: "openatlogin")
-//
-//            LaunchAtLogin.isEnabled = true
-//
-//        }
-//        else {
-//            UserDefaults.standard.set(false, forKey: "openatlogin")
-//
-//            LaunchAtLogin.isEnabled = false
-//
-//        }
+        if openatlogin.state == .on {
+
+            if Bundle.main.bundlePath == "/Applications/AirSlide.app"{
+                UserDefaults.standard.set(true, forKey: "openatlogin")
+                UserDefaults.standard.set(false, forKey: "openprefatlaunch")
+                let task = Process()
+                task.launchPath = "/bin/bash"
+                task.arguments = ["-c", "sh \(Bundle.main.resourcePath!)/login.sh"]
+                task.launch()
+                task.waitUntilExit()
+                
+            }
+            else {
+                openatlogin.state = .off
+                UserDefaults.standard.set(false, forKey: "openatlogin")
+                UserDefaults.standard.set(true, forKey: "openprefatlaunch")
+                let alert = NSAlert()
+                    alert.messageText = "Warning"
+                    alert.informativeText = "Please put app in your Applications folder first !"
+                    alert.alertStyle = .warning
+                    alert.addButton(withTitle: "OK")
+                    alert.runModal()
+            }
+
+        }
+        else if openatlogin.state == .off{
+            UserDefaults.standard.set(false, forKey: "openatlogin")
+            UserDefaults.standard.set(true, forKey: "openprefatlaunch")
+            let task = Process()
+            task.launchPath = "/bin/bash"
+            task.arguments = ["-c", "sh \(Bundle.main.resourcePath!)/nologin.sh"]
+            task.launch()
+            task.waitUntilExit()
+
+        }
     }
     
     @IBAction func hideicon(_ sender: Any) {
@@ -111,10 +133,10 @@ class PreferenceViewController: NSViewController {
         
         
         
-        if (UserDefaults.standard.value(forKey: "openatlogin") != nil) == true{
+        if UserDefaults.standard.value(forKey: "openatlogin") as! Int == 1{
             openatlogin.state = .on
         }
-            else {
+            else if UserDefaults.standard.value(forKey: "openatlogin") as! Int == 0{
             openatlogin.state = .off
             }
         
