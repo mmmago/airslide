@@ -12,10 +12,12 @@ Quick notch action to airdrop items. Free and open source alternative to [TopDro
 
 App will ask for access to automations and accessibility settings, please allow both.
 
-## TDL 
+## Work in progress
 
-- MacBook Pro 16" and MacBook Air M2 compatibility : there might be graphics issues atm, I don't have a machine to test it out
-- Launch at login issue, app have to be started manually when mac starts.
+🟩 14" MBP compatibility
+🟧 16" MBP and MacBook Air M2 compatibility (need feedbacks !)
+
+User experience on any other mac without notch may vary, might implement a solution later on.
 
 # Useful Tools
 
