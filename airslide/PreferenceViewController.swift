@@ -100,7 +100,11 @@ class PreferenceViewController: NSViewController {
     
     
     @IBAction func quitapp(_ sender: Any) {
-        NSApplication.shared.terminate(self)
+        if let window = NSApplication.shared.keyWindow {
+
+            window.close()
+
+        }
     }
     
     @IBAction func support(_ sender: Any) {

@@ -8,9 +8,9 @@ import Foundation
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate, NSSharingServiceDelegate {
     
-    var hasExecuted = false
-    var hasExecuted2 = false
-    
+    var hasExecuted = false //allow view trigger to show and be fired only once
+    var hasExecuted2 = false //allow airdrop trigger do be fired only once
+
     var filepath = ""
     
     @IBOutlet weak var menu: NSMenu?
@@ -50,7 +50,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSSharingServiceDelegate {
         if MBAM2 {
             startMBAM2()
         }
-
+        
         
         //First check for highlited files path
         AppKit.NSEvent.addGlobalMonitorForEvents(matching: .leftMouseDown) { event in
@@ -90,7 +90,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSSharingServiceDelegate {
             }
             
         }
-
+        
         
         if MBP14{
             //Create notch view
@@ -153,7 +153,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSSharingServiceDelegate {
             
             //Bring it back down if mouse drag quit top screen zone
             AppKit.NSEvent.addGlobalMonitorForEvents(matching: .leftMouseDragged) { event in
-               
+                
                 
                 let mousePoint = event.locationInWindow
                 
@@ -176,6 +176,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSSharingServiceDelegate {
                 
                 self.hasExecuted = false
                 self.hasExecuted2 = false
+                
                 
                 let frontmostApp = NSWorkspace.shared.frontmostApplication
                 let frontmostAppBundleIdentifier = frontmostApp?.bundleIdentifier
@@ -211,7 +212,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSSharingServiceDelegate {
         
         //Same for 16"
         else if MBP16{
-        
+            
             let window = NSWindow(contentRect: NSMakeRect(725, 1001, 285.71, 113.74), styleMask: .borderless, backing: .buffered, defer: false) //THEORICAL VALUES
             window.level = .screenSaver
             window.isOpaque = false
@@ -270,7 +271,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSSharingServiceDelegate {
             
             //Bring it back down if mouse drag quit top screen zone
             AppKit.NSEvent.addGlobalMonitorForEvents(matching: .leftMouseDragged) { event in
-               
+                
                 
                 let mousePoint = event.locationInWindow
                 
@@ -286,7 +287,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSSharingServiceDelegate {
                     }
                 }
             }
-        
+            
             //Hide view when mouse release
             AppKit.NSEvent.addGlobalMonitorForEvents(matching: .leftMouseUp) { event in
                 
@@ -319,12 +320,12 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSSharingServiceDelegate {
                 
                 
             }
-        
+            
         }
         
         //Same for MBAir
         else if MBAM2 {
-        
+            
             let window = NSWindow(contentRect: NSMakeRect(617.36, 856.70, 243.05, 97.35), styleMask: .borderless, backing: .buffered, defer: false) //THEORICAL VALUES
             window.level = .screenSaver
             window.isOpaque = false
@@ -383,7 +384,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSSharingServiceDelegate {
             
             //Bring it back down if mouse drag quit top screen zone
             AppKit.NSEvent.addGlobalMonitorForEvents(matching: .leftMouseDragged) { event in
-               
+                
                 //print(blueView.frame.midY)
                 let mousePoint = event.locationInWindow
                 
@@ -399,7 +400,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSSharingServiceDelegate {
                     }
                 }
             }
-        
+            
             //Hide view when mouse release
             AppKit.NSEvent.addGlobalMonitorForEvents(matching: .leftMouseUp) { event in
                 
@@ -432,7 +433,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSSharingServiceDelegate {
                 
                 
             }
-        
+            
         }
         
         
@@ -443,7 +444,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSSharingServiceDelegate {
         AppKit.NSEvent.addGlobalMonitorForEvents(matching: .leftMouseDown) { event in
             
             let mousePoint = event.locationInWindow
-
+            
             //Focus app on main screen
             if self.mainScreen.frame.contains(mousePoint) == true  {
                 
@@ -463,8 +464,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSSharingServiceDelegate {
                             let storyboard = NSStoryboard(name: "Main", bundle: nil)
                             let preferencesVC = storyboard.instantiateController(withIdentifier: "PreferencesViewController") as? NSViewController
                             preferencesVC?.presentAsModalWindow(preferencesVC!)
-
-
+                            
+                            
                             
                         }
                     }
@@ -472,127 +473,142 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSSharingServiceDelegate {
                 else if MBP16 {
                     
                     if mouseY >= (screenHeight! - statusBarHeight) - 12 && mouseX > 756.42 && mouseX < 941.42 {
-
+                        
                         if (frontmostAppBundleIdentifier! == "com.apple.finder" || frontmostAppBundleIdentifier! == "mago.airslide") {
-
+                            
                             let storyboard = NSStoryboard(name: "Main", bundle: nil)
                             let preferencesVC = storyboard.instantiateController(withIdentifier: "PreferencesViewController") as? NSViewController
                             preferencesVC?.presentAsModalWindow(preferencesVC!)
-
+                            
                         }
-
+                        
                     }
-
+                    
                 }
                 else if MBAM2 {
-
+                    
                     if mouseY >= (screenHeight! - statusBarHeight) - 12 && mouseX > 646.52 && mouseX < 827.49 {
-
+                        
                         if (frontmostAppBundleIdentifier! == "com.apple.finder" || frontmostAppBundleIdentifier! == "mago.airslide") {
-
+                            
                             let storyboard = NSStoryboard(name: "Main", bundle: nil)
                             let preferencesVC = storyboard.instantiateController(withIdentifier: "PreferencesViewController") as? NSViewController
                             preferencesVC?.presentAsModalWindow(preferencesVC!)
-
+                            
                         }
-
+                        
                     }
-
+                    
                 }
             }
-        
-        }
             
-        
+        }
+
+        var mouseDraggedinNotch = false
         
         //Drag on notch event
-        AppKit.NSEvent.addGlobalMonitorForEvents(matching: .leftMouseDragged) { event in
-
+        AppKit.NSEvent.addGlobalMonitorForEvents(matching: .leftMouseDragged) { [self] event in
+            
             let mousePoint = event.locationInWindow
-
+            
             //Focus app on main screen
             if self.mainScreen.frame.contains(mousePoint) == true  {
-
+                
                 let statusBarHeight = NSStatusBar.system.thickness
                 let screenHeight = NSScreen.main?.frame.height
                 let mouseY = event.locationInWindow.y
                 let mouseX = event.locationInWindow.x
                 let frontmostApp = NSWorkspace.shared.frontmostApplication
                 let frontmostAppBundleIdentifier = frontmostApp?.bundleIdentifier
-
+                
                 if MBP14 {
-
+                    
                     if mouseY >= (screenHeight! - statusBarHeight) - 12 && mouseX > 665 && mouseX < 850  {
-
+                        
                         if (frontmostAppBundleIdentifier! == "com.apple.finder" || frontmostAppBundleIdentifier! == "mago.airslide") { //So app only works on finder
                             
-                           
-                            self.dotherightthing()
+                            mouseDraggedinNotch = true
+                            
                         }
                     }
-
+                    
                 }
-
+                
                 else if MBP16 {
-
+                    
                     if mouseY >= (screenHeight! - statusBarHeight) - 12 && mouseX > 756.42 && mouseX < 941.42 {
-
+                        
                         if (frontmostAppBundleIdentifier! == "com.apple.finder" || frontmostAppBundleIdentifier! == "mago.airslide") {
-
-                            self.dotherightthing()
-
+                            
+                            mouseDraggedinNotch = true
+                            
                         }
-
+                        
                     }
-
+                    
                 }
                 else if MBAM2 {
-
+                    
                     if mouseY >= (screenHeight! - statusBarHeight) - 12 && mouseX > 646.52 && mouseX < 827.49 {
-
+                        
                         if (frontmostAppBundleIdentifier! == "com.apple.finder" || frontmostAppBundleIdentifier! == "mago.airslide") {
-
-                            self.dotherightthing()
-
+                            
+                            mouseDraggedinNotch = true
+                            
                         }
-
+                        
                     }
-
+                    
                 }
-
-
+                
+                
             }
-
+            
         }
         
+        
+        //This allow the main function to fire only if mouse is in notch area and not on second screen.
+        AppKit.NSEvent.addGlobalMonitorForEvents(matching: .leftMouseUp) { event in
+            
+            let mousePoint = event.locationInWindow
+            
+            if mouseDraggedinNotch == true && self.mainScreen.frame.contains(mousePoint) == true  {
+                
+                self.dotherightthing()
+               
+                mouseDraggedinNotch = false
+            }
+            else {
+                mouseDraggedinNotch = false
+            }
+          
+        }
         
     }
     
     
     func dotherightthing(){
-                
-        if !hasExecuted2 {
+        
+        if !self.hasExecuted2 {
             
-            
-            hasExecuted2 = true
-            
+            self.hasExecuted2 = true
             
             let sound = NSSound(named: UserDefaults.standard.value(forKey: "actualsound") as! NSSound.Name)
             sound?.play()
             
             //press "esc"
             let source = CGEventSource(stateID: .combinedSessionState)
-                let keyDown = CGEvent(keyboardEventSource: source, virtualKey: 53, keyDown: true)
-                keyDown?.post(tap: .cghidEventTap)
+            let keyDown = CGEvent(keyboardEventSource: source, virtualKey: 53, keyDown: true)
+            keyDown?.post(tap: .cghidEventTap)
             
-            FileManager.default.fileExists(atPath: filepath)
+            FileManager.default.fileExists(atPath: self.filepath)
             
-            let fileURL = URL(fileURLWithPath: filepath)
+            let fileURL = URL(fileURLWithPath: self.filepath)
             
             //if multiple files
-            if filepath.contains(","){
+            if self.filepath.contains(","){
                 
-                let separatedElements = filepath.components(separatedBy: ",")
+                let separatedElements = self.filepath.components(separatedBy: ",")
                 let trimmedElements = separatedElements.map { $0.trimmingCharacters(in: .whitespaces) }
                 var fileURLs = [URL]()
                 for element in trimmedElements {
@@ -614,7 +630,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSSharingServiceDelegate {
             }
             
         }
-        
     }
     
     //vvv ONLY FOR APP START INDICATOR PURPOSE vvv
@@ -650,13 +665,13 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSSharingServiceDelegate {
         window.makeKeyAndOrderFront(nil)
         
         
-            NSAnimationContext.runAnimationGroup({ (context) in
-                context.duration = 1
-                blueView.animator().frame.origin.y -= 6
-            }, completionHandler: {
-                blueView.frame.origin.y -= 0
-            })
-       
+        NSAnimationContext.runAnimationGroup({ (context) in
+            context.duration = 1
+            blueView.animator().frame.origin.y -= 6
+        }, completionHandler: {
+            blueView.frame.origin.y -= 0
+        })
+        
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
             NSAnimationContext.runAnimationGroup({ (context) in
@@ -669,7 +684,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSSharingServiceDelegate {
                 blueView.isHidden = true
             }
         }
-}
+    }
     
     func startMBP16(){
         let window = NSWindow(contentRect: NSMakeRect(725, 1001, 285.71, 113.74), styleMask: .borderless, backing: .buffered, defer: false)
@@ -702,13 +717,13 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSSharingServiceDelegate {
         window.makeKeyAndOrderFront(nil)
         
         
-            NSAnimationContext.runAnimationGroup({ (context) in
-                context.duration = 1
-                blueView.animator().frame.origin.y -= 6
-            }, completionHandler: {
-                blueView.frame.origin.y -= 0
-            })
-       
+        NSAnimationContext.runAnimationGroup({ (context) in
+            context.duration = 1
+            blueView.animator().frame.origin.y -= 6
+        }, completionHandler: {
+            blueView.frame.origin.y -= 0
+        })
+        
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
             NSAnimationContext.runAnimationGroup({ (context) in
@@ -721,7 +736,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSSharingServiceDelegate {
                 blueView.isHidden = true
             }
         }
-}
+    }
     
     func startMBAM2(){
         let window = NSWindow(contentRect: NSMakeRect(617.36, 856.70, 243.05, 97.35), styleMask: .borderless, backing: .buffered, defer: false)
@@ -754,13 +769,13 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSSharingServiceDelegate {
         window.makeKeyAndOrderFront(nil)
         
         
-            NSAnimationContext.runAnimationGroup({ (context) in
-                context.duration = 1
-                blueView.animator().frame.origin.y -= 6
-            }, completionHandler: {
-                blueView.frame.origin.y -= 0
-            })
-       
+        NSAnimationContext.runAnimationGroup({ (context) in
+            context.duration = 1
+            blueView.animator().frame.origin.y -= 6
+        }, completionHandler: {
+            blueView.frame.origin.y -= 0
+        })
+        
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
             NSAnimationContext.runAnimationGroup({ (context) in
@@ -773,7 +788,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSSharingServiceDelegate {
                 blueView.isHidden = true
             }
         }
-}
+    }
     
 }
 
