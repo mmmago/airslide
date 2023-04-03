@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21507"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Application-->
+        <scene sceneID="JPo-4y-FX3">
+            <objects>
+                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="AirSlide" customModuleProvider="target">
+                    <connections>
+                        <outlet property="firstMenuItem" destination="5kV-Vb-QxS" id="zdU-pk-EZF"/>
+                        <outlet property="menu" destination="uQy-DD-JDr" id="uhX-GW-v0k"/>
+                    </connections>
+                </customObject>
+                <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
+                <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <application id="hnw-xV-0zn" sceneMemberID="viewController">
+                    <menu key="mainMenu" title="Main Menu" systemMenu="main" id="AYu-sK-qS6">
+                        <items>
+                            <menuItem title="AirSlide" id="1Xt-HY-uBw">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="AirSlide" systemMenu="apple" id="uQy-DD-JDr">
+                                    <items>
+                                        <menuItem title="About AirSlide" id="5kV-Vb-QxS">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="orderFrontStandardAboutPanel:" target="Ady-hI-5gd" id="Exp-CZ-Vem"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="VOq-y0-SEH"/>
+                                        <menuItem title="Preferences…" keyEquivalent="," id="BOF-NM-1cW">
+                                            <connections>
+                                                <segue destination="80X-fD-jhQ" kind="show" id="V1t-NK-5K5"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="wFC-TO-SCJ"/>
+                                        <menuItem title="Quit AirSlide" keyEquivalent="q" id="4sb-4s-VLi">
+                                            <connections>
+                                                <action selector="terminate:" target="Ady-hI-5gd" id="Te7-pn-YzF"/>
+                                            </connections>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </menuItem>
+                        </items>
+                    </menu>
+                    <connections>
+                        <outlet property="delegate" destination="Voe-Tx-rLC" id="PrD-fu-P6m"/>
+                    </connections>
+                </application>
+            </objects>
+            <point key="canvasLocation" x="75" y="0.0"/>
+        </scene>
+        <!--Window Controller-->
+        <scene sceneID="TZX-Wx-HZQ">
+            <objects>
+                <windowController id="80X-fD-jhQ" sceneMemberID="viewController">
+                    <window key="window" title="Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="BqZ-Bi-uuE">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="-45" y="1306" width="400" height="200"/>
+                        <rect key="screenRect" x="-470" y="982" width="2560" height="1080"/>
+                        <view key="contentView" id="9eE-kX-tLb">
+                            <rect key="frame" x="0.0" y="0.0" width="400" height="200"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </view>
+                        <connections>
+                            <outlet property="delegate" destination="80X-fD-jhQ" id="hxp-0w-bXK"/>
+                        </connections>
+                    </window>
+                    <connections>
+                        <segue destination="d4T-8K-n1C" kind="relationship" relationship="window.shadowedContentViewController" id="SqW-BE-QBq"/>
+                    </connections>
+                </windowController>
+                <customObject id="0Z8-7Y-CIL" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="803" y="-97"/>
+        </scene>
+        <!--Preferences-->
+        <scene sceneID="y6d-K2-Xch">
+            <objects>
+                <viewController title="Preferences" storyboardIdentifier="PreferencesViewController" id="d4T-8K-n1C" customClass="PreferenceViewController" customModule="AirSlide" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="6lc-72-bkn">
+                        <rect key="frame" x="0.0" y="0.0" width="403" height="230"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="p2K-Hp-SD0">
+                                <rect key="frame" x="30" y="134" width="107" height="18"/>
+                                <buttonCell key="cell" type="check" title="Open at login" bezelStyle="regularSquare" imagePosition="left" inset="2" id="pb9-q5-nCx">
+                                    <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="openatlogin:" target="d4T-8K-n1C" id="R3K-k1-LdQ"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YQq-Q6-bgp">
+                                <rect key="frame" x="30" y="103" width="148" height="18"/>
+                                <buttonCell key="cell" type="check" title="Hide status bar icon" bezelStyle="regularSquare" imagePosition="left" alignment="center" inset="2" id="K6D-Kr-KaI">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="hideicon:" target="d4T-8K-n1C" id="nxU-RB-QZW"/>
+                                </connections>
+                            </button>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="H5C-Pj-784">
+                                <rect key="frame" x="87" y="181" width="179" height="29"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="AirSlide settings" id="mHX-kS-dL8">
+                                    <font key="font" metaFont="system" size="25"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ZY4-K2-KJg">
+                                <rect key="frame" x="30" y="73" width="131" height="16"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Custom drop sound :" id="2JZ-dK-rIb">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <comboBox verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0xm-Mf-YuR">
+                                <rect key="frame" x="169" y="65" width="128" height="26"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="cR7-O1-AeN"/>
+                                    <constraint firstAttribute="width" constant="125" id="hn9-Ov-62r"/>
+                                </constraints>
+                                <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="feD-rg-O6C">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    <connections>
+                                        <action selector="soundlist:" target="d4T-8K-n1C" id="TmF-RG-y0n"/>
+                                    </connections>
+                                </comboBoxCell>
+                            </comboBox>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rYu-Eg-xcW">
+                                <rect key="frame" x="269" y="172" width="48" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="SRA-EJ-C15"/>
+                                    <constraint firstAttribute="width" constant="48" id="VL4-zE-1nH"/>
+                                </constraints>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSApplicationIcon" id="xWX-uF-fru"/>
+                            </imageView>
+                            <button verticalHuggingPriority="750" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f7m-Ag-8W2">
+                                <rect key="frame" x="216" y="17" width="106" height="32"/>
+                                <buttonCell key="cell" type="push" title="Support ☕️" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="86v-eC-wzH">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="support:" target="d4T-8K-n1C" id="byv-kw-Wkk"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nKJ-Xe-Qmg">
+                                <rect key="frame" x="81" y="17" width="86" height="32"/>
+                                <buttonCell key="cell" type="push" title="Quit" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="BTq-Z2-hkz">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="quitapp:" target="d4T-8K-n1C" id="Cdw-Ng-lsW"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="ZY4-K2-KJg" firstAttribute="leading" secondItem="6lc-72-bkn" secondAttribute="leading" constant="32" id="2qB-37-8Cw"/>
+                            <constraint firstAttribute="trailing" secondItem="f7m-Ag-8W2" secondAttribute="trailing" constant="88" id="81j-YM-OW1"/>
+                            <constraint firstItem="p2K-Hp-SD0" firstAttribute="top" secondItem="H5C-Pj-784" secondAttribute="bottom" constant="30" id="97M-Xy-Mh5"/>
+                            <constraint firstItem="H5C-Pj-784" firstAttribute="centerX" secondItem="6lc-72-bkn" secondAttribute="centerX" constant="-25" id="BgN-OV-Tvu"/>
+                            <constraint firstItem="H5C-Pj-784" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6lc-72-bkn" secondAttribute="leading" id="Bwq-a4-pow"/>
+                            <constraint firstAttribute="bottom" secondItem="f7m-Ag-8W2" secondAttribute="bottom" constant="24" id="DMb-om-zTY"/>
+                            <constraint firstItem="p2K-Hp-SD0" firstAttribute="leading" secondItem="6lc-72-bkn" secondAttribute="leading" constant="32" id="Dyy-j0-UFU"/>
+                            <constraint firstItem="YQq-Q6-bgp" firstAttribute="top" secondItem="p2K-Hp-SD0" secondAttribute="bottom" constant="15" id="FTS-5e-TOI"/>
+                            <constraint firstItem="rYu-Eg-xcW" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="H5C-Pj-784" secondAttribute="trailing" id="Fc0-eg-F8F"/>
+                            <constraint firstItem="nKJ-Xe-Qmg" firstAttribute="top" secondItem="ZY4-K2-KJg" secondAttribute="bottom" constant="29" id="FlJ-EL-7sV"/>
+                            <constraint firstAttribute="bottom" secondItem="nKJ-Xe-Qmg" secondAttribute="bottom" constant="24" id="KN6-CD-LWy"/>
+                            <constraint firstItem="ZY4-K2-KJg" firstAttribute="top" secondItem="YQq-Q6-bgp" secondAttribute="bottom" constant="15" id="LoE-hX-IVB"/>
+                            <constraint firstItem="rYu-Eg-xcW" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="H5C-Pj-784" secondAttribute="trailing" id="P1y-0K-bJb"/>
+                            <constraint firstItem="f7m-Ag-8W2" firstAttribute="leading" secondItem="nKJ-Xe-Qmg" secondAttribute="trailing" constant="63" id="Ytk-fK-XSk"/>
+                            <constraint firstItem="0xm-Mf-YuR" firstAttribute="leading" secondItem="ZY4-K2-KJg" secondAttribute="trailing" constant="10" id="cxS-gJ-iAM"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="p2K-Hp-SD0" secondAttribute="trailing" constant="20" symbolic="YES" id="eQF-LB-YVF"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="YQq-Q6-bgp" secondAttribute="trailing" constant="20" symbolic="YES" id="ebh-AA-S9L"/>
+                            <constraint firstItem="f7m-Ag-8W2" firstAttribute="top" secondItem="0xm-Mf-YuR" secondAttribute="bottom" constant="25" id="kQm-X5-IWT"/>
+                            <constraint firstItem="rYu-Eg-xcW" firstAttribute="top" secondItem="6lc-72-bkn" secondAttribute="top" constant="10" id="tYf-gY-b68"/>
+                            <constraint firstItem="rYu-Eg-xcW" firstAttribute="centerX" secondItem="6lc-72-bkn" secondAttribute="centerX" constant="91" id="x1o-SF-UZ1"/>
+                            <constraint firstItem="0xm-Mf-YuR" firstAttribute="top" secondItem="YQq-Q6-bgp" secondAttribute="bottom" constant="15" id="x2n-Zp-xcP"/>
+                            <constraint firstAttribute="bottom" secondItem="0xm-Mf-YuR" secondAttribute="bottom" constant="69" id="xGY-jR-zYN"/>
+                            <constraint firstItem="nKJ-Xe-Qmg" firstAttribute="leading" secondItem="6lc-72-bkn" secondAttribute="leading" constant="88" id="xIo-rU-LoN"/>
+                            <constraint firstItem="YQq-Q6-bgp" firstAttribute="leading" secondItem="6lc-72-bkn" secondAttribute="leading" constant="32" id="ycY-Ot-xFD"/>
+                            <constraint firstItem="H5C-Pj-784" firstAttribute="top" secondItem="6lc-72-bkn" secondAttribute="top" constant="20" id="yhf-cv-WEP"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="hideicon" destination="YQq-Q6-bgp" id="gZ6-ND-QYf"/>
+                        <outlet property="openatlogin" destination="p2K-Hp-SD0" id="1wr-qC-6D1"/>
+                        <outlet property="quitapp" destination="nKJ-Xe-Qmg" id="MbE-gQ-9F2"/>
+                        <outlet property="soundlist" destination="feD-rg-O6C" id="W2T-fu-Ahp"/>
+                        <outlet property="support" destination="f7m-Ag-8W2" id="tEp-Ke-vPA"/>
+                    </connections>
+                </viewController>
+                <customObject id="WT6-Lb-22M" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1420.5" y="-97"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="NSApplicationIcon" width="32" height="32"/>
+    </resources>
+</document>
