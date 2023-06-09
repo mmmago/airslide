@@ -14,6 +14,7 @@ App will ask for access to automations and accessibility settings, please allow 
 
 ## Work in progress
 
+🟩 14" MBP
 🟧 16" MBP and MacBook Air M2 (13" and 15") compatibility (need feedbacks !). I don't have acess to these machines so it's pretty much trial and error.
 
 User experience on any other mac without notch may vary, might implement a solution later on.
